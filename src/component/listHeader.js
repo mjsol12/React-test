@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-class Header extends Component {
+class ListHeader extends Component {
+
   render () {
     return (
       <div style={headerStyle}>
@@ -13,7 +14,8 @@ class Header extends Component {
 const headerStyle ={
   textAlign: 'center',
   background: 'lightgray',
+  color: '#fff',
   padding: '12px'
 }
 
-export default Header;
+export default ListHeader;

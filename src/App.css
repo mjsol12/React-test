@@ -1,17 +1,37 @@
 * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Rubik', monospace;
-    font-size: 14px;
+  font-family: 'Rubik', monospace;
+  font-size: 14px;
 }
 
 a {
-    color: #333;
-    text-decoration: none;
+  color: #333;
+  text-decoration: none;
+}
+
+.container {
+  padding: 0 1rem;
+}
+
+.button-one {
+  padding: 5px 50px;
+  outline: none;
+  background-color: #27ae60;
+  border: none;
+  border-radius: 5px;
+}
+.button-one {
+  text-align: center;
+  cursor: pointer;
+}
+
+.button-one:hover {
+  background-color: #666;
 }

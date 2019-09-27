@@ -9,17 +9,14 @@ class TodoItems extends Component {
       textDecoration: this.props.todo.completed ? 'line-through': 'none'
     }
   }
-  markComplete = (e) => {
-    this.props.todo.completed = true;
-    console.log(this.props)
-  }
+
   render () {
     return (
-      <div>
+      <React.Fragment>
         <p style={this.getStyle()}>
-          <input type='checkbox' onChange={this.markComplete}/> {''} {this.props.todo.title}
+          <input type='checkbox' onChange={this.props.markComplete}/> {''} {this.props.todo.title}
           </p>
-      </div>
+      </React.Fragment>
     )
   }
 }

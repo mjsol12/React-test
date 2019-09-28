@@ -15,7 +15,29 @@ a {
   color: #333;
   text-decoration: none;
 }
-
+p {
+  background: #f4f4f4;
+  padding: 10px;
+  border-bottom: 1px #ccc dotted;
+}
+.removeBtn{
+  background:#ff0000;
+  color: #fff;
+  border: none;
+  float: right;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 3px 8px;
+}
+.returnBtn{
+  background:#666;
+  color: #fff;
+  border: none;
+  float: right;
+  cursor: pointer;
+  border-radius: 25%;
+  padding: 3px 8px;
+}
 .container {
   padding: 0 1rem;
 }

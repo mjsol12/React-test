@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css';
-import Todos from './component/todos'
-import ListHeader from './component/listHeader'
-import AddTodo from './component/addTodo'
+import Todos from './component/pages/todoList/todos'
+import Header from './component/layout/header'
+import AddTodo from './component/pages/todoList/addTodo'
 import uuid from 'uuid'
 import About from './component/pages/about'
+import TrashList from './component/pages/trash/trashList'
 
 
 class App extends Component {
@@ -27,6 +28,8 @@ class App extends Component {
         title: 'Meeting with boss',
         completed: false
       }
+    ],
+    trashes: [
     ]
   }
 
@@ -43,12 +46,17 @@ class App extends Component {
 
   // remove todo
   removeTodo = (id) => {
+    const todoToFiltered = this.state.todos.find((todo) => todo.id === id);
     this.setState({
-      todos: this.state.todos.filter((todo) => todo.id !== id)
+      todos: this.state.todos.filter((todo) => todo.id !== todoToFiltered.id),
+      trashes: [...this.state.trashes, todoToFiltered]
     });
   }
   // add todo
   addTodo = (todoTitle) => {
+    if (!todoTitle) {
+      return;
+    }
     const newTodo = {
       title: todoTitle,
       completed: false,
@@ -59,12 +67,28 @@ class App extends Component {
     })
   }
 
+  // clean trash
+  cleanTrash =() => {
+    this.setState({
+      trashes: []
+    })
+  }
+
+  // return from trash
+  returnTodo = (returnedTodo) => {
+    this.setState({
+      todos: [...this.state.todos, returnedTodo],
+      trashes: this.state.trashes.filter(trash => trash.id !== returnedTodo.id)
+    })
+    console.log(returnedTodo)
+  }
+
   render () {
     return (
       <Router>
         <div className="container">
           <div className="App">
-            <ListHeader />
+            <Header />
             <Route exact path='/' render={props => (
               <React.Fragment>
                 <AddTodo addTodo={this.addTodo}/>
@@ -74,6 +98,14 @@ class App extends Component {
               </React.Fragment>
             )}/>
             <Route path='/about' component={About}/>
+            <Route path='/trash' render={props => (
+              <React.Fragment>
+                <div style={{display: 'flex', margin: '5px'}}>
+                  <button className='button-one' onClick={this.cleanTrash}>Clean</button>
+                </div>
+                <TrashList trashes={this.state.trashes} returnTodo={this.returnTodo}/>
+              </React.Fragment>
+            )}/>
           </div>
         </div>
       </Router>

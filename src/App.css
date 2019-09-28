@@ -23,7 +23,8 @@ a {
 .button-one {
   padding: 5px 50px;
   outline: none;
-  background-color: #27ae60;
+  color: #ffffff;
+  background-color: #323232;
   border: none;
   border-radius: 5px;
 }
